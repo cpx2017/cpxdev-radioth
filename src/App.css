@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.joox {
+  background-color: greenyellow;
+}
+
+img {
+  filter: brightness(80%);
+}
+
+
+.hamburger{
+  display: none !important;
+}
+@media only screen and (max-width: 600px) {
+  .hamburger {
+   display: block !important;
+  }
+}
