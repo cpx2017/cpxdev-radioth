@@ -25,6 +25,7 @@ var myInterval;
 var audioCom = new Audio();
 var de;
 var playstat = false;
+const array1 = "sun"];
 
 const App = () => {
   const [ btn, setBtn ] = React.useState({
@@ -229,7 +230,13 @@ const fetchInfo = () => {
             forceerror()
             setBtn({...btn, play: true})
         },
+        
         success: function (r) {
+          let urip
+          if (array1.find(element => element == choosenstation.value)) {
+            urip =(r.link).replace("https", "http")
+          }
+         
             audioCom = new Audio(r.link)
             const platst = audioCom.play()
             let Timeo = setTimeout(function(){
