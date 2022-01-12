@@ -25,7 +25,7 @@ var myInterval;
 var audioCom = new Audio();
 var de;
 var playstat = false;
-const array1 = "sun"];
+const array1 = ["sun"];
 
 const App = () => {
   const [ btn, setBtn ] = React.useState({
