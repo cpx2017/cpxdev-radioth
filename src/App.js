@@ -276,6 +276,12 @@ navigator.mediaSession.setActionHandler('stop', function () {
         { label: "ATime Hot Wave", value: "hw" },
         { label: "ATime Cassette", value: "cs" }
       ]
+    },
+    {
+      label: "Chonburi",
+      options: [
+        { label: "Sunshine Radio Pattaya", value: "sun" }
+      ]
     }
   ]
 
