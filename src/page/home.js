@@ -9,7 +9,7 @@ import Fet from '../fetch'
                   clearInterval(dem)
                   setLoad(true)
                   if (Object.keys(obj).length == 0) {
-                    fetch(Fet().ul + '/radio/getnews?art=artist')
+                    fetch(Fet().ul + '/radio/getnews?art=thai entertaimnent')
                     .then(res => res.json())
                     .then(data => {
                         if (data.rss.channel.item != undefined) {

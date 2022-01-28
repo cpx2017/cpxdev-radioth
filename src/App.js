@@ -358,7 +358,7 @@ navigator.mediaSession.setActionHandler('stop', function () {
     {window.innerWidth < 800 && (
       <hr />
     )}
-     {MainLoad && (<img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cpx-circular.svg" width={20} />)} Current Region: {region}
+     {MainLoad && (<img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cpx-circular.svg" width={20} />)} Current Region: <a className='text-muted' href='//status.cpxdev.tk' target='_blank'>{region}</a>
     </span>
     </nav>
 

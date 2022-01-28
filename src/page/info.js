@@ -84,15 +84,25 @@ const Radio = ({platstat, obj, img, setLoad}) => {
                     <div class="card-body">
                         <h4 class="card-title" id="songtitle">{platstat == true && !(Object.keys(obj).length == 0) ? obj.title : 'Song Title'}</h4>
                         <h5 class="card-text" id="songartist">{platstat == true && !(Object.keys(obj).length == 0) ? obj.artist : 'Song Artist'}</h5>
+                        <p class="card-text text-muted" id="showt">{platstat == true && !(Object.keys(obj).length == 0) ? obj.djname + ' (' + obj.showtime + ')' : ''}</p>
                         <hr />
                         <p><b class="card-text" id="showtime"></b></p>
                         {platstat == true && (
                                 <div>
-                                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <a target="_blank" id="spotlink" href={platstat == true && !(Object.keys(obj).length == 0) ? obj.art : ''} class="btn btn-success" hidden={!(Object.keys(obj).length == 0) && obj.art == 'unknown' ? true : false}><i class="fab fa-spotify"></i> Listen it on Spotify</a>
-                            <a target="_blank" id="itunelink" href={platstat == true && !(Object.keys(obj).length == 0) ? obj.art2 : ''} class="btn btn-danger" hidden={!(Object.keys(obj).length == 0) && obj.art2 == 'unknown' ? true : false}><i class="fab fa-itunes"></i> Avaliable on Apple Music</a>
-                            <a target="_blank" id="jooxlink" href={platstat == true && !(Object.keys(obj).length == 0) ? obj.art3 : ''} class="btn btn-default joox" hidden={!(Object.keys(obj).length == 0) && obj.art3 == 'unknown' ? true : false}>Exclusive on JOOX Music</a>
-                          </div>
+                                    {window.innerWidth > 600 ? (
+                                              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                              <a target="_blank" id="spotlink" href={platstat == true && !(Object.keys(obj).length == 0) ? obj.art : ''} class="btn btn-success" hidden={!(Object.keys(obj).length == 0) && obj.art == 'unknown' ? true : false}><i class="fab fa-spotify"></i> Listen it on Spotify</a>
+                                              <a target="_blank" id="itunelink" href={platstat == true && !(Object.keys(obj).length == 0) ? obj.art2 : ''} class="btn btn-danger" hidden={!(Object.keys(obj).length == 0) && obj.art2 == 'unknown' ? true : false}><i class="fab fa-itunes"></i> Avaliable on Apple Music</a>
+                                              <a target="_blank" id="jooxlink" href={platstat == true && !(Object.keys(obj).length == 0) ? obj.art3 : ''} class="btn btn-default joox" hidden={!(Object.keys(obj).length == 0) && obj.art3 == 'unknown' ? true : false}>Exclusive on JOOX Music</a>
+                                            </div>
+                                    ) : (
+                                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                        <a target="_blank" id="spotlink" href={platstat == true && !(Object.keys(obj).length == 0) ? obj.art : ''} class="btn btn-success" hidden={!(Object.keys(obj).length == 0) && obj.art == 'unknown' ? true : false}><i class="fab fa-spotify"></i></a>
+                                        <a target="_blank" id="itunelink" href={platstat == true && !(Object.keys(obj).length == 0) ? obj.art2 : ''} class="btn btn-danger" hidden={!(Object.keys(obj).length == 0) && obj.art2 == 'unknown' ? true : false}><i class="fab fa-itunes"></i></a>
+                                        <a target="_blank" id="jooxlink" href={platstat == true && !(Object.keys(obj).length == 0) ? obj.art3 : ''} class="btn btn-default joox" hidden={!(Object.keys(obj).length == 0) && obj.art3 == 'unknown' ? true : false}>JOOX Music</a>
+                                      </div>
+                                    )}
+                                   
                           <br />
                           {!(Object.keys(obj).length == 0) && obj.onLike == true && (
                                <button data-toggle="tooltip" data-placement="top" title={likedLock == true && 'For DDOS Attack reason. Please wait for a while.'} onClick={() => updatelike()} class="btn btn-outline-primary mt-2"><i class="far fa-thumbs-up"></i> {obj.countliked} likes of this song.</button>
