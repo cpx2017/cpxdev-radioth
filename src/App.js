@@ -129,7 +129,7 @@ const App = () => {
             setObj(r)
             let imgtemp;
             if (r.img == '') {
-              imgtemp = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/radioth/White-square.jpg'
+              imgtemp = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/radioth/favicon.png'
             } else {
                 imgtemp = r.img
             }
@@ -180,7 +180,7 @@ const fetchInfo = () => {
         setBtn({...btn, play: false, pause: true, stop: true})
         let imgtemp;
         if (r.img == '') {
-          imgtemp = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/radioth/White-square.jpg'
+          imgtemp = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/radioth/favicon.png'
         } else {
             imgtemp = r.img
         }
