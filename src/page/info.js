@@ -93,13 +93,11 @@ const Radio = ({platstat, obj, img, setLoad}) => {
                                               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                                               <a target="_blank" id="spotlink" href={platstat == true && !(Object.keys(obj).length == 0) ? obj.art : ''} class="btn btn-success" hidden={!(Object.keys(obj).length == 0) && obj.art == 'unknown' ? true : false}><i class="fab fa-spotify"></i> Listen it on Spotify</a>
                                               <a target="_blank" id="itunelink" href={platstat == true && !(Object.keys(obj).length == 0) ? obj.art2 : ''} class="btn btn-danger" hidden={!(Object.keys(obj).length == 0) && obj.art2 == 'unknown' ? true : false}><i class="fab fa-itunes"></i> Avaliable on Apple Music</a>
-                                              <a target="_blank" id="jooxlink" href={platstat == true && !(Object.keys(obj).length == 0) ? obj.art3 : ''} class="btn btn-default joox" hidden={!(Object.keys(obj).length == 0) && obj.art3 == 'unknown' ? true : false}>Exclusive on JOOX Music</a>
                                             </div>
                                     ) : (
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                         <a target="_blank" id="spotlink" href={platstat == true && !(Object.keys(obj).length == 0) ? obj.art : ''} class="btn btn-success" hidden={!(Object.keys(obj).length == 0) && obj.art == 'unknown' ? true : false}><i class="fab fa-spotify"></i></a>
                                         <a target="_blank" id="itunelink" href={platstat == true && !(Object.keys(obj).length == 0) ? obj.art2 : ''} class="btn btn-danger" hidden={!(Object.keys(obj).length == 0) && obj.art2 == 'unknown' ? true : false}><i class="fab fa-itunes"></i></a>
-                                        <a target="_blank" id="jooxlink" href={platstat == true && !(Object.keys(obj).length == 0) ? obj.art3 : ''} class="btn btn-default joox" hidden={!(Object.keys(obj).length == 0) && obj.art3 == 'unknown' ? true : false}>JOOX Music</a>
                                       </div>
                                     )}
                                    
