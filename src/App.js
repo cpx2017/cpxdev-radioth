@@ -13,7 +13,18 @@ import $ from 'jquery'
 import 'sweetalert2/dist/sweetalert2.min.css';
 import 'hamburgers/dist/hamburgers.min.css'
 import Swal from 'sweetalert2/dist/sweetalert2';
-import Snowfall from 'react-snowfall'
+import { AppBar, Toolbar,Typography, IconButton, Drawer, FormControlLabel, ListItem, ListItemIcon, Divider, ListItemText,
+  Dialog, DialogActions, Button, DialogTitle, DialogContent, Avatar, Badge, CardContent, CardMedia, Slide } from '@material-ui/core';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+
+import HomeIcon from '@material-ui/icons/Home';
+import CloseIcon from '@material-ui/icons/Close';
+import MenuIcon from '@material-ui/icons/Menu';
+import PeopleIcon from '@material-ui/icons/People';
+import ListAltIcon from '@material-ui/icons/ListAlt';
+import RadioIcon from '@material-ui/icons/Radio';
+import InfoIcon from '@material-ui/icons/Info';
+import PublicIcon from '@material-ui/icons/Public';
 
 import Home from './page/home'
 import Info from './page/info'
@@ -27,16 +38,41 @@ var de;
 var playstat = false;
 const array1 = ["sun"];
 
+const drawerWidth = 240;
+const useStyles = makeStyles((theme) => ({
+  search: {
+    right: theme.spacing(1),
+    position: 'absolute',
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  drawerHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: theme.spacing(0, 2),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+    justifyContent: 'flex-end',
+  },
+}));
+
 const App = () => {
+  const cls = useStyles();
   const [ btn, setBtn ] = React.useState({
     play: true,
     pause: false,
     stop: false
   })
-  const [ streamurl, setStreamuri ] = React.useState('')
+  const [ streamurl, setStreamuri ] = React.useState('https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/radioth/White-square.jpg')
   const [ region, setRegion ] = React.useState('Loading')
   const [ choosenstation, setStation ] = React.useState({})
   const [ objData, setObj ] = React.useState({})
+  const [open, setOpen] = React.useState(false);
   
   const [ MainLoad, setLoad ] = React.useState(true)
 
@@ -313,56 +349,77 @@ navigator.mediaSession.setActionHandler('stop', function () {
   return (
     <div className="App">
       <Router>
-      <nav className="navbar navbar-expand-lg sticky-top navbar-light bg-warning mb-4">
-      <a className="navbar-brand" href="/">RadioTH - New Era</a>
-      {window.innerWidth < 800 && (
-      <button className={"hams hamburger hamburger--collapse " + (Collap == false ?  "" : "is-active")} onClick={() => setCollap(!Collap)} type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="hamburger-box">
-          <span className="hamburger-inner"></span>
-        </span>
-      </button>
-      )}
-  {window.innerWidth < 800 ? (
-      <div className="collapse navbar-collapse" data-toggle="collapse" data-target="#navbarNav" id="navbarNav" onClick={() => setCollap(!Collap)}>
-      <ul className="navbar-nav">
-  
-        <li className={pageid == 1 ? "nav-item active" : "nav-item"}>
-          <Link className="nav-link" onClick={() => PageChange(1)} to="/">Home</Link>
-        </li>
-        <li className={pageid == 2 ? "nav-item active" : "nav-item"}>
-          <Link className="nav-link" onClick={() => PageChange(2)} to="/songinfo">Song Info</Link>
-        </li>
-        <li className={pageid == 3 ? "nav-item active" : "nav-item"}>
-          <Link className="nav-link" onClick={() => PageChange(3)} to="/about">About</Link>
-        </li>
-      </ul>
-    </div>
-    ) : (
-      <div className="collapse navbar-collapse" id="navbarNav">
-    <ul className="navbar-nav">
+        <Slide in={region != '' ? true : false} timeout={500}>
+        <AppBar position="sticky" color='primary' className='app-barcurve'>
+          <Toolbar>
+            {open == false && (
+            <IconButton onClick={() => setOpen(true)} edge="start" color="inherit" aria-label="menu">
+              <MenuIcon />
+            </IconButton>
+            )}
+            <div onClick={()=> window.location.href = "/"}>
+              <Typography variant='h5' className='title'>
+               RadioTH - New Era
+              </Typography>
+            </div>
+                <div className={cls.search + ' mr-3'}>
+                  {MainLoad ? (
+                    <img src='https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cpx-circular.svg' width={30} />
+                  ) : (
+                  <b>{!MainLoad && !streamurl.includes('White-square.jpg') ? 'Connected' : 'You are Ready'}</b>
+                  )}
+              </div>
+          </Toolbar>
+        </AppBar>
+        </Slide>
+     
+      <Drawer
+                  className={cls.drawer}
+                  variant="temporary"
+                  color="primary"
+                  anchor="left"
+                  open={open}
+                  classes={{
+                    paper: cls.drawerPaper,
+                  }}
+                >
+                <div className={cls.drawerHeader} position="fixed">
+                  <IconButton onClick={() => setOpen(false)} size="large">
+                    <CloseIcon />
+                  </IconButton>
+                </div>
+                <Divider />
+                <d onClick={() => setOpen(false)}>
+                <ListItem component={Link} to='/' button>
+                  <ListItemIcon>
+                    <HomeIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Home" />
+                </ListItem>
+                <ListItem component={Link} to='/songinfo' button>
+                  <ListItemIcon>
+                    <RadioIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Song Info" />
+                </ListItem>
+                <ListItem component={Link} to='/about' button>
+                  <ListItemIcon>
+                    <InfoIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="About" />
+                </ListItem>
+                </d>
+                <Divider />
+                <ListItem button>
+                  <ListItemIcon>
+                    <PublicIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Current Region" secondary={region} />
+                </ListItem>
+                
+                </Drawer>
 
-      <li className={pageid == 1 ? "nav-item active" : "nav-item"}>
-        <Link className="nav-link" onClick={() => PageChange(1)} to="/">Home</Link>
-      </li>
-      <li className={pageid == 2 ? "nav-item active" : "nav-item"}>
-        <Link className="nav-link" onClick={() => PageChange(2)} to="/songinfo">Song Info</Link>
-      </li>
-      <li className={pageid == 3 ? "nav-item active" : "nav-item"}>
-        <Link className="nav-link" onClick={() => PageChange(3)} to="/about">About</Link>
-      </li>
-    </ul>
-  </div>
-    )}
-      
-    <span className="navbar-text text-right">
-    {window.innerWidth < 800 && (
-      <hr />
-    )}
-     {MainLoad && (<img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cpx-circular.svg" width={20} />)} Current Region: <a className='text-muted' href='//status.cpxdev.tk' target='_blank'>{region}</a>
-    </span>
-    </nav>
-
-      <div className='card pagemar text-left'>
+      <div className='card pagemar text-left mt-2'>
       <Switch>
           <Route exact path="/">
             <Home obj={objData} setLoad={(val) => setLoad(val)} StillLoad={!btn.play && !btn.pause && !btn.stop ? true : false} />
