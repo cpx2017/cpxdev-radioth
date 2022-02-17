@@ -360,7 +360,7 @@ navigator.mediaSession.setActionHandler('stop', function () {
               <MenuIcon />
             </IconButton>
             )}
-            <div onClick={()=> window.location.href = "/"}>
+            <div>
               <Typography variant='h5' className='title'>
                RadioTH - New Era
               </Typography>
