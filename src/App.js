@@ -26,6 +26,9 @@ import RadioIcon from '@material-ui/icons/Radio';
 import InfoIcon from '@material-ui/icons/Info';
 import PublicIcon from '@material-ui/icons/Public';
 
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
+
 import Home from './page/home'
 import Info from './page/info'
 import Abo from './page/about'
@@ -362,13 +365,26 @@ navigator.mediaSession.setActionHandler('stop', function () {
                RadioTH - New Era
               </Typography>
             </div>
-                <div className={cls.search + ' mr-3'}>
+            <>
+            {window.innerWidth > 700 ? (
+              <div className={cls.search + ' mr-3'}>
+              {MainLoad ? (
+                <img src='https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cpx-circular.svg' width={30} />
+              ) : (
+              <b>{!MainLoad && !streamurl.includes('White-square.jpg') ? 'Connected' : 'You are Ready'}</b>
+              )}
+          </div>
+            ) : (
+              <div className={cls.search + ' mr-3'}>
                   {MainLoad ? (
                     <img src='https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cpx-circular.svg' width={30} />
                   ) : (
-                  <b>{!MainLoad && !streamurl.includes('White-square.jpg') ? 'Connected' : 'You are Ready'}</b>
+                  <b>{!MainLoad && !streamurl.includes('White-square.jpg') ? (<PlayCircleFilledIcon className='text-success' data-toggle="tooltip" data-placement="bottom" title="Connected" />) : (<CheckCircleOutlineIcon className='text-primary' data-toggle="tooltip" data-placement="bottom" title="You are Ready" />)}</b>
                   )}
               </div>
+            )}
+            </>
+                
           </Toolbar>
         </AppBar>
         </Slide>
