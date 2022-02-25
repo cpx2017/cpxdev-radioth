@@ -7,6 +7,9 @@ import React from 'react';
                 <h6 class="card-subtitle mb-2 text-muted">This site will be serve taste of song from Thailand cross to around the world. Better performance and clean.</h6>
                 <p class="card-text">มิติใหม่ของการรับฟังวิทยุออนไลน์ของประเทศไทยที่ไม่จำกัดพรมแดน พร้อมด้วยประสิทธิภาพและการออกแบบระบบใหม่ยกชุด</p>
                 <br />
+                <h6 class="card-subtitle mb-2 text-muted">New Feature: See Top 5 Cart of Famous song of Artist.</h6>
+                <p class="card-text">ฟีเจอร์ล่าสุด: สามารถดูอันดับเพลง 5 อันดับสูงที่มีคนชื่นชอบมากที่สุด โดยคลิกที่ชื่อศิลปินในหน้า Song Info ขณะรับฟังวิทยุ</p>
+                <br />
                 <h6 class="card-subtitle mb-2 text-muted">Fresh news update from current artist while now showing.</h6>
                 <p class="card-text">รับข่าวสารอัปเดตเกี่ยวกับศิลปินของเพลงที่กำลังเล่นอยู่แบบเรียลไทม์</p>
                 <br />
