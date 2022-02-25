@@ -5,6 +5,10 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import Swal from 'sweetalert2/dist/sweetalert2';
 import Fet from '../fetch'
 
+import {
+    useHistory
+  } from "react-router-dom";
+
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -51,6 +55,7 @@ function iOS() {
 
 const Radio = ({platstat, obj, img, setLoad}) => {
     const classes = useStyles();
+    const History = useHistory()
     const [ready, setReady] = React.useState(false)
     React.useEffect(() => {
         setReady(true)
@@ -103,6 +108,11 @@ const Radio = ({platstat, obj, img, setLoad}) => {
             }
         }
     
+        const Checkready = () => {
+            if (platstat == true && !(Object.keys(obj).length == 0) && obj.onLike == true) {
+                History.push('/topsong?art=' + obj.artist)
+            }
+        }
     
     return ( 
          <div className='card-body'>
@@ -123,7 +133,7 @@ const Radio = ({platstat, obj, img, setLoad}) => {
                     
                     <div class="card-body">
                         <h4 class="card-title" id="songtitle">{platstat == true && !(Object.keys(obj).length == 0) ? obj.title : 'Song Title'}</h4>
-                        <h5 class="card-text" id="songartist">{platstat == true && !(Object.keys(obj).length == 0) ? obj.artist : 'Song Artist'}</h5>
+                        <h5 class="card-text" id="songartist" className={platstat == true && !(Object.keys(obj).length == 0) && obj.onLike == true ? 'cur' : ''} onClick={() => Checkready()}>{platstat == true && !(Object.keys(obj).length == 0) ? obj.artist : 'Song Artist'}</h5>
                         <p class="card-text text-muted" id="showt">{platstat == true && !(Object.keys(obj).length == 0) ? obj.djname + ' (' + obj.showtime + ')' : ''}</p>
                         <hr />
                         <p><b class="card-text" id="showtime"></b></p>
