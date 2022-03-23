@@ -72,7 +72,7 @@ const App = () => {
     pause: false,
     stop: false
   })
-  const [ streamurl, setStreamuri ] = React.useState('https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/radioth/White-square.jpg')
+  const [ streamurl, setStreamuri ] = React.useState('https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/radioth/White-square.webp')
   const [ region, setRegion ] = React.useState('Loading')
   const [ choosenstation, setStation ] = React.useState({})
   const [ objData, setObj ] = React.useState({})
@@ -131,7 +131,7 @@ const App = () => {
     playstat = false
     setBtn({...btn, play: true, pause: false, stop: true})
     audioCom.pause();
-    setStreamuri('https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/radioth/White-square.jpg')
+    setStreamuri('https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/radioth/White-square.webp')
     setObj({})
     document.title = '[Pause Radio] RadioTH - New Era'
   }
@@ -142,7 +142,7 @@ const App = () => {
     setBtn({...btn, play: true, pause: false, stop: false})
     audioCom.pause();
     audioCom.currentTime = 0
-    setStreamuri('https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/radioth/White-square.jpg')
+    setStreamuri('https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/radioth/White-square.webp')
     setObj({})
     document.title = 'RadioTH - New Era'
     if ('mediaSession' in navigator) {
@@ -169,7 +169,7 @@ const App = () => {
             setObj(r)
             let imgtemp;
             if (r.img == '') {
-              imgtemp = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/radioth/favicon.png'
+              imgtemp = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/radioth/favicon.webp'
             } else {
                 imgtemp = r.img
             }
@@ -220,7 +220,7 @@ const fetchInfo = () => {
         setBtn({...btn, play: false, pause: true, stop: true})
         let imgtemp;
         if (r.img == '') {
-          imgtemp = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/radioth/favicon.png'
+          imgtemp = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/radioth/favicon.webp'
         } else {
             imgtemp = r.img
         }
@@ -372,7 +372,7 @@ navigator.mediaSession.setActionHandler('stop', function () {
               {MainLoad ? (
                 <img src='https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cpx-circular.svg' width={30} />
               ) : (
-              <b>{!MainLoad && !streamurl.includes('White-square.jpg') ? 'Connected' : 'You are Ready'}</b>
+              <b>{!MainLoad && !streamurl.includes('White-square.webp') ? 'Connected' : 'You are Ready'}</b>
               )}
           </div>
             ) : (
@@ -380,7 +380,7 @@ navigator.mediaSession.setActionHandler('stop', function () {
                   {MainLoad ? (
                     <img src='https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cpx-circular.svg' width={30} />
                   ) : (
-                  <b>{!MainLoad && !streamurl.includes('White-square.jpg') ? (<PlayCircleFilledIcon className='text-success' data-toggle="tooltip" data-placement="bottom" title="Connected" />) : (<CheckCircleOutlineIcon className='text-primary' data-toggle="tooltip" data-placement="bottom" title="You are Ready" />)}</b>
+                  <b>{!MainLoad && !streamurl.includes('White-square.webp') ? (<PlayCircleFilledIcon className='text-success' data-toggle="tooltip" data-placement="bottom" title="Connected" />) : (<CheckCircleOutlineIcon className='text-primary' data-toggle="tooltip" data-placement="bottom" title="You are Ready" />)}</b>
                   )}
               </div>
             )}

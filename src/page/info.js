@@ -119,7 +119,7 @@ const Radio = ({platstat, obj, img, setLoad}) => {
              <div class="row no-gutters">
                 <div class="col-md-4">
                 <CardMedia
-                        src={platstat == true && !(Object.keys(obj).length == 0) ? img :"https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/radioth/White-square.jpg"}
+                        src={platstat == true && !(Object.keys(obj).length == 0) ? img :"https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/radioth/White-square.webp"}
                         component="img"
                         width={60}
                     />
@@ -168,7 +168,7 @@ const Radio = ({platstat, obj, img, setLoad}) => {
         // <div className='card-body'>
         //      <div class="row no-gutters">
         //         <div class="col-md-4">
-        //             <img src={platstat == true && !(Object.keys(obj).length == 0) ? img :"https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/radioth/White-square.jpg"} id="imgpick" width="80" class="card-img" />
+        //             <img src={platstat == true && !(Object.keys(obj).length == 0) ? img :"https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/radioth/White-square.webp"} id="imgpick" width="80" class="card-img" />
         //         </div>
         //         <div class="col-md">
         //             <div class="card-header" id="stationcurrent">
