@@ -134,7 +134,7 @@ const Radio = ({platstat, obj, img, setLoad}) => {
                     <div class="card-body">
                         <h4 class="card-title" id="songtitle">{platstat == true && !(Object.keys(obj).length == 0) ? obj.title : 'Song Title'}</h4>
                         <h5 class="card-text" id="songartist" className={platstat == true && !(Object.keys(obj).length == 0) && obj.onLike == true ? 'cur' : ''} onClick={() => Checkready()}>{platstat == true && !(Object.keys(obj).length == 0) ? obj.artist : 'Song Artist'}</h5>
-                        <p class="card-text text-muted" id="showt">{platstat == true && !(Object.keys(obj).length == 0) ? obj.djname + ' (' + obj.showtime + ')' : ''}</p>
+                        <p class="card-text text-muted" id="showt">{platstat == true && !(Object.keys(obj).length == 0) && obj.djname != "" && obj.showtime != "" ? obj.djname + ' (' + obj.showtime + ')' : ''}</p>
                         <hr />
                         <p><b class="card-text" id="showtime"></b></p>
                         {platstat == true && (
