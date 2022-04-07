@@ -9,6 +9,7 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "facebook-video-link": "^1.0.2",
     "firebase": "^9.6.1",
     "firebase-tools": "^10.0.0",
     "google-news-json": "^2.0.4",
