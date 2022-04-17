@@ -1,10 +1,34 @@
 import React from 'react';
 import $ from 'jquery'
+import ListItem from '@material-ui/core/ListItem';
+import Divider from '@material-ui/core/Divider';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
+import { makeStyles } from '@material-ui/core/styles';
+import Grow from '@material-ui/core/Grow';
+import {
+    useHistory
+  } from "react-router-dom";
 
-const TopSong = ({Fet,setLoad}) => {
+  const useStyles = makeStyles((theme) => ({
+    large: {
+      width: theme.spacing(10),
+      height: theme.spacing(10),
+    },
+  }));
+
+const TopSong = ({Fet,setLoad, Load, onplay}) => {
+    const classes = useStyles();
+    const History = useHistory()
     const [ Art, setArt ] = React.useState('Unknown Artist')
     const [ Arr, setArr ] = React.useState([])
+    const [ okthen, setOK ] = React.useState(false)
+    const [ Artsitcover, setArtData ] = React.useState(null)
     React.useEffect(() => {
+        if (onplay == false) {
+            History.push('/')
+        }
         setLoad(true)
         var url = new URL(window.location.href);
         var c = url.searchParams.get("art");
@@ -23,12 +47,39 @@ const TopSong = ({Fet,setLoad}) => {
                   setLoad(false)
                 }
             })
+            $.ajax({
+                url: Fet + "/radio/getartist?artist=" + c,
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                error: function () {
+                    setLoad(false)
+                },
+                success: function (r) {
+                    if (r.name != "") {
+                        setArtData(r)
+                        setArt(r.name)
+                    }
+                  setLoad(false)
+                }
+            })
+            setOK(true)
         }
     }, [])
     return ( 
         <div className='mt-3 ml-2 mr-2'>
-        <h5>Top song of {Art}</h5>
+             <ListItem alignItems="flex-start">
+        <ListItemAvatar>
+          <Avatar alt="arttop" src={Artsitcover != null ?Artsitcover.url : ''} className={classes.large} />
+        </ListItemAvatar>
+        <ListItemText
+        className='mt-4 ml-4'
+          primary={"Top song of " + Art}
+          secondary={(<a className='cur' onClick={() => History.goBack()}>Go back to Song Info</a>)}
+        />
+      </ListItem>
         <hr />
+        <Grow in={okthen == true ? true : false}>
         {Arr.length > 0 ?  (
             <div class="table-responsive">
             <table class="table">
@@ -51,10 +102,11 @@ const TopSong = ({Fet,setLoad}) => {
             </table>
             </div>
         ):(
-            <div className='text-center'>
+            <div className='text-center pb-2'>
                 <h6>No records</h6>
             </div>
         )}
+        </Grow>
         </div>
      );
 }

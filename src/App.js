@@ -72,6 +72,7 @@ const App = () => {
     pause: false,
     stop: false
   })
+  const His = useHistory()
   const [ streamurl, setStreamuri ] = React.useState('https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/radioth/White-square.webp')
   const [ region, setRegion ] = React.useState('Loading')
   const [ choosenstation, setStation ] = React.useState({})
@@ -352,7 +353,6 @@ navigator.mediaSession.setActionHandler('stop', function () {
 
   return (
     <div className="App">
-      <Router>
         <Slide in={region != '' ? true : false} timeout={500}>
         <AppBar position="sticky" color='primary' className='app-barcurve'>
           <Toolbar>
@@ -362,7 +362,7 @@ navigator.mediaSession.setActionHandler('stop', function () {
             </IconButton>
             )}
             <div>
-              <Typography variant='h5' className='title'>
+              <Typography variant='h5' className='title' onClick={() => His.push('/')}>
                RadioTH - New Era
               </Typography>
             </div>
@@ -445,14 +445,13 @@ navigator.mediaSession.setActionHandler('stop', function () {
             <Info platstat={playstat} station={choosenstation.value} obj={objData} img={streamurl} setLoad={(val) => setLoad(val)} />
           </Route>
           <Route path="/topsong">
-            <TopSong Fet={Fet().ul} setLoad={(val) => setLoad(val)} />
+            <TopSong Fet={Fet().ul} setLoad={(val) => setLoad(val)} Load={MainLoad} onplay={playstat} />
           </Route>
           <Route path="/about">
             <Abo />
           </Route>
         </Switch>
       </div>
-      </Router>
      
       {window.innerWidth >= 800 ? (
           <div class="card bg-light mt-4 sticky-bottom">
@@ -479,7 +478,7 @@ navigator.mediaSession.setActionHandler('stop', function () {
           </div>
         )}
         {Object.keys(objData).length > 0 && (
-      <div className="col-md text-right mt-2">
+      <div className="col-md text-right mt-2 cur" onClick={() => His.push('/songinfo')}>
       ชื่อเพลงที่กำลังเล่นอยู่: {objData.title.substring(0,30)}{(objData.title.length > 30 && '...')} | {objData.artist.substring(0,30)}{(objData.artist.length > 30 && '...')}
       </div>
           )}
@@ -508,7 +507,7 @@ navigator.mediaSession.setActionHandler('stop', function () {
         )}
           </div>
           {Object.keys(objData).length > 0 && (
-      <div className="col-md text-right mt-5">
+      <div className="col-md text-right mt-5 cur" onClick={() => His.push('/songinfo')}>
       ชื่อเพลงที่กำลังเล่นอยู่: {objData.title.substring(0,20)}{(objData.title.length > 20 && '...')} | {objData.artist.substring(0,20)}{(objData.artist.length > 20 && '...')}
       </div>
           )}

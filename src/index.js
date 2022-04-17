@@ -5,11 +5,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './theme';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory
+} from "react-router-dom";
 
 ReactDOM.render(
+  <Router>
   <ThemeProvider theme={theme}>
     <App />
-  </ThemeProvider>,
+  </ThemeProvider>
+  </Router>,
   document.getElementById('root')
 );
 
