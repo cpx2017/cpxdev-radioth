@@ -322,7 +322,8 @@ navigator.mediaSession.setActionHandler('stop', function () {
         { label: "Green Wave", value: "green" },
         { label: "ATime White Pop", value: "wp" },
         { label: "ATime Hot Wave", value: "hw" },
-        { label: "ATime Cassette", value: "cs" }
+        { label: "ATime Cassette", value: "cs" },
+        { label: "Flex Station", value: "flex" }
       ]
     },
     {
