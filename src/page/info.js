@@ -69,9 +69,15 @@ const Radio = ({platstat, obj, img, setLoad}) => {
               clearInterval(de);
             }, 30000);
                 $.ajax({
-                    url: Fet().ul + "/radio/updatelike?name=" + obj.title + "&artist=" + obj.artist,
+                    url: Fet().ul + "/radio/updatelike",
                     type: "POST",
                     contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({
+                        name: obj.title,
+                        artist: obj.artist,
+                        sid: obj.sid,
+                        aid: obj.aid
+                    }),
                     dataType: "text",
                     error: function () {
                         setLoad(false)
