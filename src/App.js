@@ -33,7 +33,6 @@ import Home from './page/home'
 import Info from './page/info'
 import TopSong from './page/topsong'
 import Abo from './page/about'
-
 import Fet from './fetch'
 
 var myInterval;
