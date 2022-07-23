@@ -31,7 +31,6 @@ import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 
 import Home from './page/home'
 import Info from './page/info'
-import TopSong from './page/topsong'
 import Abo from './page/about'
 import Fet from './fetch'
 
@@ -443,9 +442,6 @@ navigator.mediaSession.setActionHandler('stop', function () {
           </Route>
           <Route path="/songinfo">
             <Info platstat={playstat} station={choosenstation.value} obj={objData} img={streamurl} setLoad={(val) => setLoad(val)} />
-          </Route>
-          <Route path="/topsong">
-            <TopSong Fet={Fet().ul} setLoad={(val) => setLoad(val)} Load={MainLoad} onplay={playstat} />
           </Route>
           <Route path="/about">
             <Abo />

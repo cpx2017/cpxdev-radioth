@@ -158,10 +158,7 @@ const Radio = ({platstat, obj, img, setLoad}) => {
                                     )}
                                    
                           <br />
-                          {!(Object.keys(obj).length == 0) && obj.onLike == true && (
-                               <button data-toggle="tooltip" data-placement="top" title={likedLock == true && 'For DDOS Attack reason. Please wait for a while.'} onClick={() => updatelike()} class="btn btn-outline-primary mt-2"><i class="far fa-thumbs-up"></i> {obj.countliked} likes of this song.</button>
-                          )}
-                         
+                        
                                 </div>
                         )}
                        
